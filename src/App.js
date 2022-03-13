@@ -1,25 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from 'react'
+import Householdform from "./components/householdForm"
+import Householdlinks from './components/householdlinks'
+import Household from './components/household'
+import { Routes, Route, useMatch } from 'react-router-dom'
 
-function App() {
+const App = () => {
+  const [households, setHouseholds] = useState([])
+
+  const houseMatch = useMatch('/households/:id')
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+ <>
+ <Routes>
+  <Route path='/' element={<><Householdform setHouseholds={setHouseholds} households={households}/> <Householdlinks households={households} /></>} />
+  <Route path='/households/:id' element={<Household household={houseMatch}/>} />
+ </Routes>
+ </>
+)
 }
 
-export default App;
+export default App
