@@ -20,7 +20,6 @@ const Expenseform = ({ households, setHouseholds, household, person}) => {
     }
 
     const addExpense = () => {
-        console.log(expenseObj)
         household.expenses.push(expenseObj)
         setHouseholds(households.map(h => h.id === household.id ? household : h))
     }
