@@ -12,7 +12,7 @@ const Householdform = ({ setHouseholds, households }) => {
     const household = {
       id: createId(),
       name: householdname.value,
-      occupiants: []
+      occupants: []
     }
     setHouseholds(households.concat(household))
   }
