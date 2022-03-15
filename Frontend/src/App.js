@@ -14,7 +14,7 @@ const App = () => {
   useEffect(() => { async function getEm() {
     const request = await householdservice.getAll()
     setHouseholds(request)} getEm() }, [])
-
+  console.log(households)
   const houseMatch = useMatch('/households/:id')
   const household = houseMatch
    ? households.find(house => house.id === Number(houseMatch.params.id))

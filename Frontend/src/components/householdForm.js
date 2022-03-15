@@ -3,15 +3,10 @@ import householdservice from "../services/householdservice";
 
 const Householdform = ({ setHouseholds, households }) => {
   const householdname = useField('text')
-  const createId = () => {
-    const id = Math.floor(Math.random() * 10000)
-    return id
-  }
 
   const addHousehold = async (e) => {
     e.preventDefault()
     const household = {
-      id: createId(),
       name: householdname.value,
       occupants: [],
       expenses: []

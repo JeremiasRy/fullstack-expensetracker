@@ -1,23 +1,20 @@
-const express = require('express')
+const app = require('./app')
 const config = require('./utils/config')
-const cors = require('cors')
 const middleware = require('./utils/middleware')
-const app = express()
 const mongoose = require('mongoose')
+const http = require('http')
 
-
-app.use(cors())
-app.use(middleware.requestLogger)
-
-app.get('/', (req, res) => {
-    res.send('<p>täh</p>')
-})
-app.get('/households', (req, res) => {
-    res.send('<p>tänne dataa</p>')
-})
-
-
-const PORT = config.port
-app.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`)
+mongoose.connect(config.mongoUrl)
+  .then(result => {
+    console.log('connected')
   })
+  .catch(result => {
+    console.log('failed to connect')
+  })
+
+const server = http.createServer(app)
+const PORT = config.port
+
+server.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`)
+})
