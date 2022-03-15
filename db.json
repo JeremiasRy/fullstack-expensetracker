@@ -1,0 +1,105 @@
+{
+  "households": [
+    {
+      "id": 1234,
+      "name": "testitalous",
+      "occupants": [
+        {
+          "id": 12,
+          "name": "Piia",
+          "split": 40
+        },
+        {
+          "id": 13,
+          "name": "Jeremias",
+          "split": 60
+        }
+      ],
+      "expenses": [
+        {
+          "id": 12345,
+          "date": "Mon Mar 14 2022",
+          "name": "Groceries",
+          "amount": 123,
+          "month": 2,
+          "year": 2022,
+          "userId": 12
+        },
+        {
+          "id": 9876,
+          "date": "Mon Jan 9 2022",
+          "name": "Groceries",
+          "amount": 145.8,
+          "month": 0,
+          "year": 2022,
+          "userId": 13
+        },
+        {
+          "id": 5619,
+          "date": "Tue Mar 15 2022",
+          "name": "Groceries",
+          "amount": 108.98,
+          "month": 2,
+          "year": 2022,
+          "userId": 12
+        },
+        {
+          "id": 9180,
+          "date": "Tue Mar 15 2022",
+          "name": "Groceries",
+          "amount": 54.02,
+          "month": 2,
+          "year": 2022,
+          "userId": 12
+        },
+        {
+          "id": 4618,
+          "date": "Tue Mar 15 2022",
+          "name": "Gas",
+          "amount": 65.7,
+          "month": 2,
+          "year": 2022,
+          "userId": 13
+        }
+      ]
+    },
+    {
+      "id": 7249,
+      "name": "asdd",
+      "occupants": [
+        {
+          "id": 930,
+          "name": "Jeesus",
+          "split": 50,
+          "expenses": []
+        },
+        {
+          "id": 5658,
+          "name": "Juudas",
+          "split": 50,
+          "expenses": []
+        }
+      ],
+      "expenses": [
+        {
+          "id": 9532,
+          "date": "Tue Mar 15 2022",
+          "name": "Wine",
+          "amount": 12,
+          "month": 2,
+          "year": 2022,
+          "userId": 930
+        },
+        {
+          "id": 4154,
+          "date": "Tue Mar 15 2022",
+          "name": "Bread",
+          "amount": 73,
+          "month": 2,
+          "year": 2022,
+          "userId": 5658
+        }
+      ]
+    }
+  ]
+}
