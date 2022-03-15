@@ -1,0 +1,2 @@
+13.3.2022, 2 hours, bulding the base for the app. 
+14.3.2022, 9 hours, created functionality and logic for expenses (history, totals)

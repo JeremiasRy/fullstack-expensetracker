@@ -1,7 +1,8 @@
 import { Link } from "react-router-dom"
 
 const Month = ({household, month}) => {
-    const x = household[0].expenses.filter(e => e.month === month)
+    console.log(household)
+    const x = household.expenses.filter(e => e.month === month)
     const y = x.map(e => e.amount)
     const total = y.reduce((a,b) => a + b, 0)
     
@@ -14,11 +15,11 @@ const Month = ({household, month}) => {
 } 
 
 const Pastmonths = ({households, matchId}) => {
- const household = households.filter(h => h.id === Number(matchId.params.id))
+ const household = households.find(h => h.id === Number(matchId.params.id))
  console.log(household)
  return (
      <>
-     <Link to={`/households/${household[0].id}`}>Back</Link>
+     <Link to={`/households/${household.id}`}>Back</Link>
      <h4>January</h4>
      <Month household={household} month={0}/> <br/>
      <h4>February</h4>

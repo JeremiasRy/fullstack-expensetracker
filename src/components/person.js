@@ -1,4 +1,5 @@
 import Expenseform from "./expenceform"
+import Splitform from './splitform'
 import Total from "./total"
 import { Link } from "react-router-dom"
 
@@ -12,7 +13,9 @@ const Person = ({ households, setHouseholds, personmatch }) => {
         <h1>{person.name}</h1>
         <Total expenses={expensesBy}/>
         {expensesBy.map(e => <li key={e.id}>{e.date} {e.name} {e.amount}€</li>)} <br/><br/>
+        Split: {person.split}% <br/><br/>
         <Expenseform household={household} person={person} households={households} setHouseholds={setHouseholds}/> <br/>
+        <Splitform household={household} person={person} households={households} setHouseholds={setHouseholds} />
         </>
     )
 }

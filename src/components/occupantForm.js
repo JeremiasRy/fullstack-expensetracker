@@ -1,4 +1,5 @@
 import { useField } from '../hooks'
+import householdservice from '../services/householdservice'
 
 const Occupantform = ({ households, setHouseholds, household }) => {
     const occupant = useField('text')
@@ -9,12 +10,21 @@ const Occupantform = ({ households, setHouseholds, household }) => {
     const occupantObj = {
         id: createId(),
         name: occupant.value,
+        split: 0,
         expenses: []
+        
     }
-    const handlesubmit = () => {
+    const handlesubmit = async () => {
         const upHouseObj = household
         upHouseObj.occupants.push(occupantObj)
-        setHouseholds(households.map(h => h.id === household.id ? upHouseObj : h))
+        upHouseObj.occupants[upHouseObj.occupants.length - 1].split = (100 / upHouseObj.occupants.length)
+        if (upHouseObj.occupants.length > 1) {
+            console.log('täh')
+            upHouseObj.occupants.forEach(person => { person.split = (100 / upHouseObj.occupants.length) 
+        })
+    }
+        const updated = await householdservice.updateHouseHold(upHouseObj, upHouseObj.id)
+        setHouseholds(households.map(h => h.id === household.id ? updated : h))
     }
     return (
         <>

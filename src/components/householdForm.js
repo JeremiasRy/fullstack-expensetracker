@@ -1,4 +1,5 @@
 import { useField } from "../hooks";
+import householdservice from "../services/householdservice";
 
 const Householdform = ({ setHouseholds, households }) => {
   const householdname = useField('text')
@@ -7,14 +8,16 @@ const Householdform = ({ setHouseholds, households }) => {
     return id
   }
 
-  const addHousehold = (e) => {
+  const addHousehold = async (e) => {
     e.preventDefault()
     const household = {
       id: createId(),
       name: householdname.value,
-      occupants: []
+      occupants: [],
+      expenses: []
     }
-    setHouseholds(households.concat(household))
+    const newHold = await householdservice.addHousehold(household)
+    setHouseholds(households.concat(newHold))
   }
     return (
       <>

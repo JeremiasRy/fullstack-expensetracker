@@ -1,4 +1,5 @@
 import { useField } from "../hooks"
+import householdservice from "../services/householdservice"
 
 const Expenseform = ({ households, setHouseholds, household, person}) => {
     const amount = useField('number')
@@ -19,9 +20,10 @@ const Expenseform = ({ households, setHouseholds, household, person}) => {
         userId: person.id
     }
 
-    const addExpense = () => {
+    const addExpense = async () => {
         household.expenses.push(expenseObj)
-        setHouseholds(households.map(h => h.id === household.id ? household : h))
+        const upHold = await householdservice.updateHouseHold(household, household.id)
+        setHouseholds(households.map(h => h.id === household.id ? upHold : h))
     }
 
     return (
