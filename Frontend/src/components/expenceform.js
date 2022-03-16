@@ -22,7 +22,7 @@ const Expenseform = ({ households, setHouseholds, household, person}) => {
 
     const addExpense = async () => {
         household.expenses.push(expenseObj)
-        const upHold = await householdservice.updateHouseHold(household, household.id)
+        const upHold = await householdservice.updateHousehold(household, household.id)
         setHouseholds(households.map(h => h.id === household.id ? upHold : h))
     }
 

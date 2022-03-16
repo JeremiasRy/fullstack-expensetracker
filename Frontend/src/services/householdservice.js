@@ -4,10 +4,9 @@ const baseUrl = 'http://localhost:3001/api/households'
 
 const getAll = async () => {
   const request = await axios.get(baseUrl)
-  console.log(request.data)
   return request.data
 }
-const updateHouseHold = async (upObject, id) => {
+const updateHousehold = async (upObject, id) => {
   const request = await axios.put(`${baseUrl}/${id}`, upObject)
   return request.data
 }
@@ -16,4 +15,4 @@ const addHousehold = async (newHold) => {
   return request.data
 }
 
-export default { getAll, updateHouseHold, addHousehold }
+export default { getAll, updateHousehold, addHousehold }

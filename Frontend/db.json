@@ -7,12 +7,18 @@
         {
           "id": 12,
           "name": "Piia",
-          "split": 40
+          "split": 33.333333333333336
         },
         {
           "id": 13,
           "name": "Jeremias",
-          "split": 60
+          "split": 33.333333333333336
+        },
+        {
+          "id": 1859,
+          "name": "Lennon",
+          "split": 33.333333333333336,
+          "expenses": []
         }
       ],
       "expenses": [
@@ -60,6 +66,24 @@
           "month": 2,
           "year": 2022,
           "userId": 13
+        },
+        {
+          "id": 6134,
+          "date": "Tue Mar 15 2022",
+          "name": "dog food",
+          "amount": 100,
+          "month": 2,
+          "year": 2022,
+          "userId": 1859
+        },
+        {
+          "id": 1747,
+          "date": "Tue Mar 15 2022",
+          "name": "kdf",
+          "amount": 23,
+          "month": 2,
+          "year": 2022,
+          "userId": 12
         }
       ]
     },
@@ -100,6 +124,59 @@
           "userId": 5658
         }
       ]
+    },
+    {
+      "name": "joku talous",
+      "occupants": [
+        {
+          "id": 3590,
+          "name": "Lennon",
+          "split": 15,
+          "expenses": []
+        },
+        {
+          "id": 5538,
+          "name": "Jedi",
+          "split": 15,
+          "expenses": []
+        },
+        {
+          "id": 9428,
+          "name": "Piia",
+          "split": 70,
+          "expenses": []
+        }
+      ],
+      "expenses": [
+        {
+          "id": 5631,
+          "date": "Tue Mar 15 2022",
+          "name": "dog food",
+          "amount": 65.4,
+          "month": 2,
+          "year": 2022,
+          "userId": 3590
+        },
+        {
+          "id": 5533,
+          "date": "Tue Mar 15 2022",
+          "name": "dog water",
+          "amount": 47.3,
+          "month": 2,
+          "year": 2022,
+          "userId": 5538
+        },
+        {
+          "id": 8466,
+          "date": "Tue Mar 15 2022",
+          "name": "Gas",
+          "amount": 145,
+          "month": 2,
+          "year": 2022,
+          "userId": 9428
+        }
+      ],
+      "id": 7250
     }
   ]
 }

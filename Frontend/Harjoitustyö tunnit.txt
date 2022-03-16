@@ -1,2 +1,3 @@
 13.3.2022, 2 hours, bulding the base for the app. 
 14.3.2022, 9 hours, created functionality and logic for expenses (history, totals)
+15.3, 8 hours, created split system and got frontend working with json server, started work on backend

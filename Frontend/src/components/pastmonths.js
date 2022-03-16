@@ -3,8 +3,7 @@ import { Link } from "react-router-dom"
 const Month = ({household, month}) => {
     console.log(household)
     const x = household.expenses.filter(e => e.month === month)
-    const y = x.map(e => e.amount)
-    const total = y.reduce((a,b) => a + b, 0)
+    const total = x.map(e => e.amount).reduce((a,b) => a + b, 0)
     
     return (
         <>

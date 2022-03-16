@@ -14,10 +14,11 @@ const App = () => {
   useEffect(() => { async function getEm() {
     const request = await householdservice.getAll()
     setHouseholds(request)} getEm() }, [])
-  console.log(households)
+
+
   const houseMatch = useMatch('/households/:id')
   const household = houseMatch
-   ? households.find(house => house.id === Number(houseMatch.params.id))
+   ? households.find(house => house.id === houseMatch.params.id)
    : null
   const personMatch = useMatch('/households/:id/occupiant/:id')
   const houseHistoryMatch = useMatch('/households/:id/history')
@@ -29,7 +30,7 @@ return (
  <Routes>
   <Route path='/' element={<><Householdform setHouseholds={setHouseholds} households={households}/> <Householdlinks households={households} /></>} />
   <Route path='/households/:id' element={<Household households={households} setHouseholds={setHouseholds} household={household} />} />
-  <Route path='/households/:id/occupiant/:id' element={<Person households={households} setHouseholds={setHouseholds} personmatch={personMatch} />} />
+  <Route path='/households/:id/occupaant/:id' element={<Person households={households} setHouseholds={setHouseholds} personmatch={personMatch} />} />
   <Route path='/households/:id/history' element={<Pastmonths households={households} matchId={houseHistoryMatch}/>}/>
   <Route path='/households/:id/evensteven' element={<Split households={households} matchId={evenMatch}/>} />
  </Routes>
