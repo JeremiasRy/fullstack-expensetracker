@@ -5,8 +5,8 @@ mongoose.connect(config.mongoUrl)
 
 const householdSchema = new mongoose.Schema({
     name: String,
-    occupants: [{name: String, split: Number}],
-    expenses: [{id: Number, date: String, name: String, amount: Number, month: Number, year: Number, userId: Number}]
+    occupants: [{ name: String, split: Number}],
+    expenses: [{ date: String, name: String, amount: Number, month: Number, year: Number, userName: String, userId: String}]
 })
 
 householdSchema.set('toJSON', {

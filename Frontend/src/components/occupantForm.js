@@ -1,7 +1,7 @@
 import { useField } from '../hooks'
 import householdservice from '../services/householdservice'
 
-const Occupantform = ({ households, setHouseholds, household }) => {
+const Occupantform = ( {households, setHouseholds, household }) => {
     const occupant = useField('text')
     
     const occupantObj = {
@@ -18,6 +18,7 @@ const Occupantform = ({ households, setHouseholds, household }) => {
     }
         const updated = await householdservice.updateHousehold(upHouseObj, upHouseObj.id)
         console.log(updated)
+        setHouseholds(households.map(orig => orig.id === updated.id ? updated : orig))
     }
     return (
         <>

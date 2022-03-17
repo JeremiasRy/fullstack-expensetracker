@@ -8,6 +8,7 @@ const getAll = async () => {
 }
 const updateHousehold = async (upObject, id) => {
   const request = await axios.put(`${baseUrl}/${id}`, upObject)
+  console.log(request.data)
   return request.data
 }
 const addHousehold = async (newHold) => {

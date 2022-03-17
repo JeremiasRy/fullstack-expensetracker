@@ -21,10 +21,7 @@ householdRouter.post('/', async (req, res) => {
 })
 
 householdRouter.put('/:id', async (req,res) => {
-  const newHouseObj = req.body
-  console.log(newHouseObj)
-  const updateMe = await Household.findOneAndUpdate(newHouseObj.id, newHouseObj)
-  console.log(updateMe)
+  const updateMe = await Household.findOneAndUpdate(req.body.id, req.body, {new: true})
   res.json(updateMe.toJSON())
   })
 

@@ -3,19 +3,18 @@ import Splitform from './splitform'
 import Total from "./total"
 import { Link } from "react-router-dom"
 
-const Person = ({ households, setHouseholds, personmatch }) => {
-    const household = households.find(h => h.id === Number(personmatch.pathname.substring(12, 16)))
-    const person = household.occupants.find(occupant => occupant.id === Number(personmatch.params.id))
-    const expensesBy = household.expenses.filter(e => e.userId === person.id)
+const Person = ({ households, setHouseholds, house, person }) => {
+    const expensesBy = house.expenses.filter(e => e.userName === person.name)
+    console.log(person)
     return (
         <>
-        <Link to={`/households/${household.id}`}>Back</Link>
+        <Link to={`/households/${house.id}`}>Back</Link>
         <h1>{person.name}</h1>
         <Total expenses={expensesBy}/>
         {expensesBy.map(e => <li key={e.id}>{e.date} {e.name} {e.amount}€</li>)} <br/><br/>
         Split: {person.split}% <br/><br/>
-        <Expenseform household={household} person={person} households={households} setHouseholds={setHouseholds}/> <br/>
-        <Splitform household={household} person={person} households={households} setHouseholds={setHouseholds} />
+        <Expenseform household={house} person={person} households={households} setHouseholds={setHouseholds}/> <br/>
+        <Splitform household={house} person={person} households={households} setHouseholds={setHouseholds} />
         </>
     )
 }
