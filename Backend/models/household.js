@@ -5,16 +5,17 @@ mongoose.connect(config.mongoUrl)
 
 const householdSchema = new mongoose.Schema({
     name: String,
-    occupants: [{ name: String, split: Number}],
-    expenses: [{ date: String, name: String, amount: Number, month: Number, year: Number, userName: String, userId: String}]
+    occupants: [{
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Occupant'}],
+    expenses: [{
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Expense'}]
 })
 
 householdSchema.set('toJSON', {
     transform: (document, returnedObject) => {
       returnedObject.id = returnedObject._id.toString()
-      returnedObject.occupants.forEach(person => { 
-          person.id = person._id.toString() 
-          delete person._id})
       delete returnedObject._id
       delete returnedObject.__v
     }

@@ -2,3 +2,5 @@
 14.3.2022, 9 hours, created functionality and logic for expenses (history, totals)
 15.3, 8 hours, created split system and got frontend working with json server, started work on backend
 16.3, 2 hours, working backend update functions,(occupants, expenses, etc)
+17.3, 2 hours, refactor frontend after backend work.. need to separate expense adding from occupant adding... id's are changing wildly
+18.3, 2hours, changed data structure completely fixing everything

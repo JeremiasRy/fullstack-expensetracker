@@ -9,16 +9,14 @@ const Occupantform = ( {households, setHouseholds, household }) => {
         split: 0,   
     }
     const handlesubmit = async () => {
-        const upHouseObj = household
-        upHouseObj.occupants.push(occupantObj)
-        upHouseObj.occupants[upHouseObj.occupants.length - 1].split = (100 / upHouseObj.occupants.length)
-        if (upHouseObj.occupants.length > 1) {
-            upHouseObj.occupants.forEach(person => { person.split = (100 / upHouseObj.occupants.length) 
-        })
-    }
-        const updated = await householdservice.updateHousehold(upHouseObj, upHouseObj.id)
-        console.log(updated)
-        setHouseholds(households.map(orig => orig.id === updated.id ? updated : orig))
+        const updated = await householdservice.newOccupant(occupantObj, household.id)
+        
+        /*household.occupants.push(newOccu)
+        household.occupants[household.occupants.length - 1].split = (100 / household.occupants.length)
+        if (household.occupants.length > 1) {
+            household.occupants.forEach(person => { person.split = (100 / household.occupants.length) 
+          })
+        } */
     }
     return (
         <>

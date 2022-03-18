@@ -1,10 +1,14 @@
 const householdRouter = require('express').Router()
 const Household = require('../models/household')
+const Occupant = require('../models/occupant')
+const Expense = require('../models/expense')
 const middleware = require('../utils/middleware')
 
 householdRouter.get('/', async (req, res) => {
     const households = await Household
     .find({})
+    .populate('occupants')
+    .populate('expenses')
     res.json(households.map(house => house.toJSON()))
 })
 
@@ -20,9 +24,19 @@ householdRouter.post('/', async (req, res) => {
     res.json(savedHousehold.toJSON())
 })
 
-householdRouter.put('/:id', async (req,res) => {
-  const updateMe = await Household.findOneAndUpdate(req.body.id, req.body, {new: true})
-  res.json(updateMe.toJSON())
+householdRouter.post('/:id/occupants', async (req,res) => {
+  const household = await Household.findById(req.params.id)
+  const newOccu = new Occupant({
+    name: req.body.name,
+    split: req.body.split
+  })
+  household.occupants.push(newOccu)
+  const houseOccuIds = household.occupants.map(person => person)
+  const occupants = houseOccuIds.map(id => await Occupant.findById(id) )
+  console.log(occupants)
+  const savedHold = await household.save()
+  newOccu.save()
+  res.json(savedHold.toJSON())
   })
 
 

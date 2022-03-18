@@ -6,8 +6,8 @@ const getAll = async () => {
   const request = await axios.get(baseUrl)
   return request.data
 }
-const updateHousehold = async (upObject, id) => {
-  const request = await axios.put(`${baseUrl}/${id}`, upObject)
+const newOccupant = async (upObject, id) => {
+  const request = await axios.post(`${baseUrl}/${id}/occupants`, upObject)
   console.log(request.data)
   return request.data
 }
@@ -16,4 +16,4 @@ const addHousehold = async (newHold) => {
   return request.data
 }
 
-export default { getAll, updateHousehold, addHousehold }
+export default { getAll, newOccupant, addHousehold, }

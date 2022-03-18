@@ -27,7 +27,6 @@ const App = () => {
     houseAndPerson.person = house.occupants.find(person => person.id === personMatch.params.id)
     houseAndPerson.house = house
   }
-  console.log(houseAndPerson)
   const houseHistoryMatch = useMatch('/households/:id/history')
   const evenMatch = useMatch('/households/:id/evensteven')
 
