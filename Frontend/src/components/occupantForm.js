@@ -3,20 +3,15 @@ import householdservice from '../services/householdservice'
 
 const Occupantform = ( {households, setHouseholds, household }) => {
     const occupant = useField('text')
-    
+    console.log(household)
     const occupantObj = {
         name: occupant.value,
-        split: 0,   
+        split: 0,
+        houseId: household.id   
     }
     const handlesubmit = async () => {
         const updated = await householdservice.newOccupant(occupantObj, household.id)
-        
-        /*household.occupants.push(newOccu)
-        household.occupants[household.occupants.length - 1].split = (100 / household.occupants.length)
-        if (household.occupants.length > 1) {
-            household.occupants.forEach(person => { person.split = (100 / household.occupants.length) 
-          })
-        } */
+        setHouseholds(households.map(house => house.id === household.id ? {...house, occupants: updated} : house))
     }
     return (
         <>

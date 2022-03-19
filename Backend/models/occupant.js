@@ -5,7 +5,8 @@ mongoose.connect(config.mongoUrl)
 
 const occupantSchema = new mongoose.Schema({
   name: String,
-  split: Number
+  split: Number,
+  houseId: String
 })
 
 occupantSchema.set('toJSON', {

@@ -18,7 +18,7 @@ const App = () => {
 
   const houseMatch = useMatch('/households/:id')
   const household = houseMatch
-   ? households.find(house => house.id === houseMatch.params.id)
+   ? houseMatch.params.id
    : null
   const personMatch = useMatch('/households/:id/occupant/:id')
   const houseAndPerson = {}
@@ -35,7 +35,7 @@ return (
  <Link to='/'>Home</Link>
  <Routes>
   <Route path='/' element={<><Householdform setHouseholds={setHouseholds} households={households}/> <Householdlinks households={households} /></>} />
-  <Route path='/households/:id' element={<Household households={households} setHouseholds={setHouseholds} household={household} />} />
+  <Route path='/households/:id' element={<Household households={households} setHouseholds={setHouseholds} id={household} />} />
   <Route path='/households/:id/occupant/:id' element={<Person households={households} setHouseholds={setHouseholds} house={houseAndPerson.house} person={houseAndPerson.person} />} />
   <Route path='/households/:id/history' element={<Pastmonths households={households} matchId={houseHistoryMatch}/>}/>
   <Route path='/households/:id/evensteven' element={<Split households={households} matchId={evenMatch}/>} />

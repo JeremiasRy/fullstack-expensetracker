@@ -15,5 +15,9 @@ const addHousehold = async (newHold) => {
   const request = await axios.post(baseUrl, newHold)
   return request.data
 }
+const getHousehold = async (id) => {
+  const request = await axios.get(`${baseUrl}/${id}`)
+  return request.data
+}
 
-export default { getAll, newOccupant, addHousehold, }
+export default { getAll, newOccupant, addHousehold, getHousehold}

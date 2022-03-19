@@ -3,6 +3,7 @@ const Household = require('../models/household')
 const Occupant = require('../models/occupant')
 const Expense = require('../models/expense')
 const middleware = require('../utils/middleware')
+const household = require('../models/household')
 
 householdRouter.get('/', async (req, res) => {
     const households = await Household
@@ -25,19 +26,29 @@ householdRouter.post('/', async (req, res) => {
 })
 
 householdRouter.post('/:id/occupants', async (req,res) => {
-  const household = await Household.findById(req.params.id)
   const newOccu = new Occupant({
     name: req.body.name,
-    split: req.body.split
+    split: req.body.split,
+    houseId: req.body.houseId
   })
-  household.occupants.push(newOccu)
-  const houseOccuIds = household.occupants.map(person => person)
-  const occupants = houseOccuIds.map(id => await Occupant.findById(id) )
-  console.log(occupants)
-  const savedHold = await household.save()
-  newOccu.save()
-  res.json(savedHold.toJSON())
+  const savedOccupant = await newOccu.save()
+  const occupants = await Occupant.find({houseId: req.body.houseId})
+
+  occupants[occupants.length - 1].split = (100 / occupants.length)
+  if (occupants.length > 1) {
+    occupants.forEach(person => { person.split = (100 / occupants.length) 
   })
+  } 
+  occupants.forEach(person => person.save())
+  res.json(occupants.map(person => person.toJSON()))
+  })
+
+householdRouter.get('/:id', async (req,res) => {
+  const household = await Household.findById(req.params.id)
+  .populate('occupants')
+  .populate('expenses')
+  res.json(household.toJSON())
+})
 
 
 module.exports = householdRouter
