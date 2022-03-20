@@ -5,7 +5,6 @@ const Expenseform = ({ households, setHouseholds, household, person}) => {
     const amount = useField('number')
     const expense = useField('text')
     const date = new Date()
-    console.log(person)
     const expenseObj = {
         date: date.toDateString(),
         name: expense.value,
@@ -17,9 +16,9 @@ const Expenseform = ({ households, setHouseholds, household, person}) => {
     }
 
     const addExpense = async () => {
-        household.expenses.push(expenseObj)
-        const upHold = await householdservice.updateHousehold(household, household.id)
-        setHouseholds(households.map(h => h.id === household.id ? upHold : h))
+        const newExpense = await householdservice.newExpense(expenseObj, household.id)
+        household.expenses.push(newExpense)
+        setHouseholds(households.map(house => house.id === household.id ? household : house))
     }
 
     return (

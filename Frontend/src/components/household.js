@@ -1,21 +1,13 @@
 import Occupantform from "./occupantForm"
 import Total from "./total"
 import { Link } from "react-router-dom"
-import householdservice from "../services/householdservice"
-import { useEffect, useState } from "react"
 
 
-const Household = ({households, setHouseholds, id}) => {
-  useEffect(() => { async function getEm() {
-    const request = await householdservice.getAll()
-    setHouseholds(request)} getEm() }, [])
+const Household = ({households, setHouseholds, household}) => {
 
-  const household = households.find(house => house.id === id)
-  console.log(households)
   if (household === undefined) {
     return null
   }
-  console.log(household.occupants)
     return (
         <>
         <h1>{household.name}</h1>

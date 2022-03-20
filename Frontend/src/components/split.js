@@ -1,5 +1,5 @@
-const Split = ({ households, matchId }) => {
-  const household = households.find(h => h.id === Number(matchId.params.id))
+const Split = ({ household }) => {
+  
   const occupants = household.occupants.map(person => person)
 
   return (

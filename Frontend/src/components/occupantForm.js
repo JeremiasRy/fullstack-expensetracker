@@ -3,7 +3,6 @@ import householdservice from '../services/householdservice'
 
 const Occupantform = ( {households, setHouseholds, household }) => {
     const occupant = useField('text')
-    console.log(household)
     const occupantObj = {
         name: occupant.value,
         split: 0,

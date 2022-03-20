@@ -19,5 +19,21 @@ const getHousehold = async (id) => {
   const request = await axios.get(`${baseUrl}/${id}`)
   return request.data
 }
+const getOccupants = async () => {
+  const request = await axios.get(`${baseUrl}/occupants`)
+  return request.data
+}
+const getOccupant = async (houseId, id) => {
+  const request = await axios.get(`${baseUrl}/${houseId}/occupants/${id}`)
+  return request.data
+}
+const newExpense = async (expense, id) => {
+  const request = await axios.post(`${baseUrl}/${id}/expenses`, expense)
+  return request.data
+}
+const setSplits = async (person) => {
+  const request = await axios.put(`${baseUrl}/${person.houseId}/splits`, person)
+  return request.data
+}
 
-export default { getAll, newOccupant, addHousehold, getHousehold}
+export default { getAll, newOccupant, addHousehold, getHousehold, getOccupants, getOccupant, newExpense, setSplits }

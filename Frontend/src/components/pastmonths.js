@@ -13,8 +13,7 @@ const Month = ({household, month}) => {
     )
 } 
 
-const Pastmonths = ({households, matchId}) => {
- const household = households.find(h => h.id === Number(matchId.params.id))
+const Pastmonths = ({ household }) => {
  console.log(household)
  return (
      <>
