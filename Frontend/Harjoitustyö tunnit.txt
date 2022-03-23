@@ -5,3 +5,7 @@
 17.3, 2 hours, refactor frontend after backend work.. need to separate expense adding from occupant adding... id's are changing wildly
 18.3, 2hours, changed data structure completely fixing everything
 19.3, 2 hours, figuring out how to move data around work on front and back..
+20.3, 6 hours, getting frontend to work with backend
+21.3, 2 hours, combined pastmonths and split into one component
+22.3, 2 hours, cleaned frontend app code
+23.3, 2 hours, added a datepicker to expense form (didn't build it myself..) and started reworking expense form in householdform.

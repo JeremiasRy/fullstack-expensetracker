@@ -13,6 +13,7 @@ const Householdform = ({ setHouseholds, households }) => {
     }
     const newHold = await householdservice.addHousehold(household)
     setHouseholds(households.concat(newHold))
+    householdname.onReset()
   }
     return (
       <>

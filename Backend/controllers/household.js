@@ -87,5 +87,4 @@ householdRouter.put('/:id/splits', async (req,res) => {
   res.json(houseOccupants.map(house => house.toJSON()))
 })
 
-
 module.exports = householdRouter

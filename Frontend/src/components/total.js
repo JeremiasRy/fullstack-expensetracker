@@ -2,9 +2,9 @@ const Total = ({ expenses }) => {
     const date = new Date()
     const currentMonth = date.getMonth()
     
-    const thisMonth = expenses.filter(e => e.month === currentMonth).map(e => e.amount).reduce((a,b) => a + b, 0)
+    const thisMonth = Math.floor(expenses.filter(e => e.month === currentMonth).map(e => e.amount).reduce((a,b) => a + b, 0) * 100) / 100
 
-    const all = expenses.map(e => e.amount).reduce((a,b) => a + b, 0)
+    const all = Math.floor(expenses.map(e => e.amount).reduce((a,b) => a + b, 0) * 100) / 100
 
  return (
      <>

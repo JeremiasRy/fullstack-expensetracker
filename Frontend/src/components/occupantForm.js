@@ -11,6 +11,7 @@ const Occupantform = ( {households, setHouseholds, household }) => {
     const handlesubmit = async () => {
         const updated = await householdservice.newOccupant(occupantObj, household.id)
         setHouseholds(households.map(house => house.id === household.id ? {...house, occupants: updated} : house))
+        occupant.onReset()
     }
     return (
         <>

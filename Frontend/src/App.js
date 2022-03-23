@@ -3,21 +3,22 @@ import Householdform from "./components/householdForm"
 import Householdlinks from './components/householdlinks'
 import Household from './components/household'
 import Person from './components/person'
-import Pastmonths from './components/pastmonths'
+import EvenSteven from './components/evenSteven'
 import { Routes, Route, useMatch, Link, useLocation  } from 'react-router-dom'
-import Split from './components/split'
 import householdservice from './services/householdservice'
 
 const App = () => {
   const [households, setHouseholds] = useState([])
   const [occupants, setOccupants] = useState([])
   const location = useLocation()
-
+  
   async function getEm() {
+    console.log('täh')
     const request = await householdservice.getAll()
     setHouseholds(request)} 
   
   async function getEmOccupants() {
+    console.log('täh')
     const request = await householdservice.getOccupants()
     setOccupants(request)}
   
@@ -29,7 +30,7 @@ const App = () => {
     ? households.find(h => h.id === houseMatch.params.id)
     : null
 
-  const personMatch = useMatch('/households/:id/occupant/:id')
+  const personMatch = useMatch('/occupant/:id')
   const houseAndOccupant = personMatch
     ? { person: occupants.find(o => o.id === personMatch.params.id), household: households.find(h => h.id === occupants.find(o => o.id === personMatch.params.id).houseId) }
     : { person: null, household: null }
@@ -38,11 +39,6 @@ const App = () => {
   const houseHistory = houseHistoryMatch 
     ? households.find(h => h.id === houseHistoryMatch.params.id)
     : null
-    
-  const evenMatch = useMatch('/households/:id/evensteven')
-  const evenSteven = evenMatch
-    ? households.find(h => h.id === evenMatch.params.id)
-    : null
 
 return (
  <>
@@ -50,9 +46,8 @@ return (
  <Routes>
   <Route path='/' element={<><Householdform setHouseholds={setHouseholds} households={households}/> <Householdlinks households={households} /></>} />
   <Route path='/households/:id' element={<Household households={households} setHouseholds={setHouseholds} household={household} />} />
-  <Route path='/households/:id/occupant/:id' element={<Person households={households} setHouseholds={setHouseholds} houseAndOccupant={houseAndOccupant} />} />
-  <Route path='/households/:id/history' element={<Pastmonths household={houseHistory}/>}/>
-  <Route path='/households/:id/evensteven' element={<Split household={evenSteven}/>} />
+  <Route path='/occupant/:id' element={<Person households={households} setHouseholds={setHouseholds} houseAndOccupant={houseAndOccupant} />} />
+  <Route path='/households/:id/history' element={<EvenSteven household={houseHistory}/>}/>
  </Routes>
  </>
 )
