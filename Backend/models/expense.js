@@ -9,6 +9,7 @@ const expenseSchema = new mongoose.Schema({
     amount: Number, 
     month: Number, 
     year: Number, 
+    shared: Boolean,
     userName: String, 
     userId: String
 })

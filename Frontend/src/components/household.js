@@ -1,5 +1,6 @@
 import Occupantform from "./occupantForm"
 import Total from "./total"
+import Expenseform from "./expenceform"
 import { Link } from "react-router-dom"
 
 
@@ -20,6 +21,8 @@ const Household = ({households, setHouseholds, household}) => {
         <Link to={`/occupant/${person.id}`}>{person.name}</Link> <br />
         <Total expenses={household.expenses.filter(e => e.userId === person.id)} key={person.name}/></li> 
         )} <br/>
+        <h3>Add expense</h3>
+        <Expenseform household={household} households={households} setHouseholds={setHouseholds}/> <br/>
         <Occupantform households={households} setHouseholds={setHouseholds} household={household}/> <br/>
         </>
     ) 

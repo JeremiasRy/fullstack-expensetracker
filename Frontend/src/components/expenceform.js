@@ -6,7 +6,7 @@ import { useRef } from "react";
 
 import "react-datepicker/dist/react-datepicker.css";
 
-const Expenseform = ({ households, setHouseholds, household, person}) => {
+const Expenseform = ({ households, setHouseholds, household }) => {
     const occupantInput = useRef(null);
     const [startDate, setStartDate] = useState(new Date());
 
@@ -18,6 +18,7 @@ const Expenseform = ({ households, setHouseholds, household, person}) => {
         amount: Number(amount.value),
         month: startDate.getMonth(),
         year: startDate.getFullYear(),
+        shared: true,
         userName: '',
         userId: ''
     }
@@ -34,18 +35,24 @@ const Expenseform = ({ households, setHouseholds, household, person}) => {
         occupantInput.current.value = ''
     }
 
+
     return (
         <>
         <input {...expense} placeholder='expense'/> <br/>
         <input {...amount} placeholder='amount' /> <br/>
-        Date: <br/>
         <DatePicker selected={startDate} onChange={(date) => setStartDate(date)} />
-        By: <br/>
-        <input list="occupants" ref={occupantInput}/>
+        <input list="occupants" ref={occupantInput} placeholder='By'/>
         <datalist id="occupants">
            {household.occupants.map(o => <option value={o.name} />)} 
         </datalist> <br/>
+        <form >
+          <input type='radio' name='shareOrnot' id='shared' onClick={() => {expenseObj.shared = true; console.log(expenseObj)} }/>
+          <label htmlFor='shared'>Shared</label>
+          <input type='radio' id='personal' name='shareOrnot' onClick={() => {expenseObj.shared = false; console.log(expenseObj)}} /> 
+          <label htmlFor='personal'>Personal</label>
+        </form>
         <button onClick={addExpense}>Add expense</button>
+
         </>
     )
 }
