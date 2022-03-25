@@ -1,5 +1,5 @@
-import { useField } from "../hooks";
-import householdservice from "../services/householdservice";
+import { useField } from '../hooks'
+import householdservice from '../services/householdservice'
 
 const Householdform = ({ setHouseholds, households }) => {
   const householdname = useField('text')
@@ -8,7 +8,7 @@ const Householdform = ({ setHouseholds, households }) => {
     e.preventDefault()
     const household = {
       name: householdname.value,
-      monthsSettled: [false,false,false,false,false,false,false,false,false,false,false,false],
+      monthsSettled: [false, false, false, false, false, false, false, false, false, false, false, false],
       occupants: [],
       expenses: []
     }
@@ -16,14 +16,14 @@ const Householdform = ({ setHouseholds, households }) => {
     setHouseholds(households.concat(newHold))
     householdname.onReset()
   }
-    return (
-      <>
+  return (
+    <>
       <form onSubmit={addHousehold}>
-      <input {...householdname} placeholder='household'/><br/>
-       <button type='submit'>Add</button>
+        <input {...householdname} placeholder='household' /><br />
+        <button type='submit'>Add</button>
       </form>
-      </>
-    )
+    </>
+  )
 }
 
 export default Householdform
