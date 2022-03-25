@@ -15,6 +15,7 @@ householdRouter.post('/', async (req, res) => {
     const newHousehold = req.body
     const household = new Household({
       name: newHousehold.name,
+      monthsSettled: req.body.monthsSettled,
       occupants: newHousehold.occupants,
       expenses: newHousehold.expenses
     })
@@ -59,6 +60,35 @@ householdRouter.get('/:id', async (req,res) => {
   .populate('expenses')
   res.json(household.toJSON())
 })
+householdRouter.put('/:id', async (req,res) => {
+  const household = {
+    name: req.body.name,
+    monthsSettled: req.body.monthsSettled,
+    occupants: req.body.occupants.map(o => o.id),
+    expenses: req.body.expenses.map(e => e.id),
+    id: req.body.id
+  }
+  const updated = await Household.findByIdAndUpdate(req.body.id, household, {new: true})
+  console.log(updated)
+  res.json(updated.toJSON())
+})
+
+householdRouter.delete('/:id', async (req,res) => {
+  const household = await Household
+  .findById(req.params.id)
+  .populate('occupants')
+  .populate('expenses')
+  if (!household) {
+    throw Error ('deleted already')
+  }
+  const name = household.name
+  household.occupants.forEach(o => { o.delete() })
+  household.expenses.forEach(e => { e.delete() })
+  household.delete()
+  console.log(name)
+  res.json(`Succesfully removed ${name}`)
+})
+
 householdRouter.post('/:id/expenses', async (req,res) => {
   const household = await Household.findById(req.params.id)
   const expense = new Expense({
@@ -67,6 +97,7 @@ householdRouter.post('/:id/expenses', async (req,res) => {
     amount: req.body.amount, 
     month: req.body.month, 
     year: req.body.year, 
+    shared: req.body.shared,
     userName: req.body.userName, 
     userId: req.body.userId
   })

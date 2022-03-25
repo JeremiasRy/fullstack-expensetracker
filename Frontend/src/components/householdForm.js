@@ -8,6 +8,7 @@ const Householdform = ({ setHouseholds, households }) => {
     e.preventDefault()
     const household = {
       name: householdname.value,
+      monthsSettled: [false,false,false,false,false,false,false,false,false,false,false,false],
       occupants: [],
       expenses: []
     }

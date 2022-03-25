@@ -1,7 +1,8 @@
 import { useField } from '../hooks'
 import householdservice from '../services/householdservice'
+import Button from 'react-bootstrap/esm/Button'
 
-const Occupantform = ( {households, setHouseholds, household }) => {
+const Occupantform = ( {households, setHouseholds, household} ) => {
     const occupant = useField('text')
     const occupantObj = {
         name: occupant.value,
@@ -15,9 +16,8 @@ const Occupantform = ( {households, setHouseholds, household }) => {
     }
     return (
         <>
-        <h4>Add a person to this economy</h4>
-            <input {...occupant} placeholder='name' /> 
-            <button onClick={handlesubmit}>Add</button>
+            <input {...occupant} placeholder='name' /> <br/>
+            <Button variant='success' onClick={handlesubmit} style={{margin: '5px'}}>Add occupant</Button>
         </>
     )
 }

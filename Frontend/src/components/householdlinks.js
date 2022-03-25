@@ -1,7 +1,10 @@
 import { Link } from "react-router-dom"
 
+
 const Householdlinks = ({ household }) => {
- return (
+
+
+  return (
      <>
      <li><Link to={`/households/${household.id}`}>{household.name}</Link></li>
      </>

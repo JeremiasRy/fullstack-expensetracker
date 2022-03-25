@@ -6,6 +6,14 @@ const getAll = async () => {
   const request = await axios.get(baseUrl)
   return request.data
 }
+const removeHouse = async (id) => {
+  const request = await axios.delete(`${baseUrl}/${id}`)
+  return request.data
+}
+const updateHouse = async (household) => {
+  const request = await axios.put(`${baseUrl}/${household.id}`, household)
+  return request.data
+}
 const newOccupant = async (upObject, id) => {
   const request = await axios.post(`${baseUrl}/${id}/occupants`, upObject)
   console.log(request.data)
@@ -36,4 +44,4 @@ const setSplits = async (person) => {
   return request.data
 }
 
-export default { getAll, newOccupant, addHousehold, getHousehold, getOccupants, getOccupant, newExpense, setSplits }
+export default { getAll, newOccupant, addHousehold, getHousehold, getOccupants, getOccupant, newExpense, setSplits, removeHouse, updateHouse }

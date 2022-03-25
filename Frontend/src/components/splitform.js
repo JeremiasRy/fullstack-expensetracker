@@ -1,9 +1,7 @@
 import { useField } from "../hooks"
 import householdservice from "../services/householdservice"
 
-const Splitform = ( {setHouseholds, households, household, person} ) => {
-    console.log(household)
-    console.log(person)
+const Splitform = ( {setHouseholds, households, household, person } ) => {
     const split = useField('number')
     
     const handleSplit = async () => {
@@ -11,11 +9,10 @@ const Splitform = ( {setHouseholds, households, household, person} ) => {
         const updated = await householdservice.setSplits(person)
         household.occupants = updated
         setHouseholds(households.map(h => h.id === household.id ? household : h))
-
     }
  return (
      <>
-     <input {...split} placeholder='New split in %'/> <br/>
+     <input {...split} placeholder='Your split in %'/> <br/>
      <button onClick={handleSplit}>Change split</button>
      </>
  )

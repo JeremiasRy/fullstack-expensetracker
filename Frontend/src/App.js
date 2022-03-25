@@ -10,15 +10,14 @@ import householdservice from './services/householdservice'
 const App = () => {
   const [households, setHouseholds] = useState([])
   const [occupants, setOccupants] = useState([])
+  const [notification, setNotification] = useState(null)
   const location = useLocation()
   
   async function getEm() {
-    console.log('täh')
     const request = await householdservice.getAll()
     setHouseholds(request)} 
   
   async function getEmOccupants() {
-    console.log('täh')
     const request = await householdservice.getOccupants()
     setOccupants(request)}
   
@@ -41,16 +40,15 @@ const App = () => {
     : null
 
 return (
- <>
- <Link to='/'>Home</Link>
+ <div className='container' style={{ backgroundColor: 'blanchedalmond', padding: '40px', width: '800px', height: '1200px'}}>
+ <Link to='/' style={{padding: '3px'}}>Home</Link>
  <Routes>
-  <Route path='/' element={<><Householdform setHouseholds={setHouseholds} households={households}/> <Householdlinks households={households} /></>} />
-  <Route path='/households/:id' element={<Household households={households} setHouseholds={setHouseholds} household={household} />} />
-  <Route path='/occupant/:id' element={<Person households={households} setHouseholds={setHouseholds} houseAndOccupant={houseAndOccupant} />} />
-  <Route path='/households/:id/history' element={<EvenSteven household={houseHistory}/>}/>
+  <Route path='/' element={<><Householdlinks households={households} /><Householdform setHouseholds={setHouseholds} households={households} setNotification={setNotification} /></>} />
+  <Route path='/households/:id' element={<Household households={households} setHouseholds={setHouseholds} household={household} setNotification={setNotification} />} />
+  <Route path='/occupant/:id' element={<Person households={households} setHouseholds={setHouseholds} houseAndOccupant={houseAndOccupant} setNotification={setNotification} />} />
+  <Route path='/households/:id/history' element={<EvenSteven household={houseHistory} households={households} setHouseholds={setHouseholds} setNotification={setNotification}/>}/>
  </Routes>
- </>
-)
-}
+ </div>
+)}
 
 export default App

@@ -10,3 +10,4 @@
 22.3, 2 hours, cleaned frontend app code
 23.3, 2 hours, added a datepicker to expense form (didn't build it myself..) and started reworking expense form in householdform.
 24.3, 2 hours, added a personal/shared radio buttons in expense form
+25.3, 5 hours, styling and finishing components

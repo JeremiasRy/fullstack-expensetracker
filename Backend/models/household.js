@@ -5,6 +5,7 @@ mongoose.connect(config.mongoUrl)
 
 const householdSchema = new mongoose.Schema({
     name: String,
+    monthsSettled: [],
     occupants: [{
       type: mongoose.Schema.Types.ObjectId,
       ref: 'Occupant'}],
