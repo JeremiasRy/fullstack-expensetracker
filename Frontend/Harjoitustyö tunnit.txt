@@ -1,0 +1,13 @@
+13.3.2022, 2 hours, bulding the base for the app. 
+14.3.2022, 9 hours, created functionality and logic for expenses (history, totals)
+15.3, 8 hours, created split system and got frontend working with json server, started work on backend
+16.3, 2 hours, working backend update functions,(occupants, expenses, etc)
+17.3, 2 hours, refactor frontend after backend work.. need to separate expense adding from occupant adding... id's are changing wildly
+18.3, 2hours, changed data structure completely fixing everything
+19.3, 2 hours, figuring out how to move data around work on front and back..
+20.3, 6 hours, getting frontend to work with backend
+21.3, 2 hours, combined pastmonths and split into one component
+22.3, 2 hours, cleaned frontend app code
+23.3, 2 hours, added a datepicker to expense form (didn't build it myself..) and started reworking expense form in householdform.
+24.3, 2 hours, added a personal/shared radio buttons in expense form
+25.3, 5 hours, styling and finishing components
