@@ -15,7 +15,7 @@ const Month = ({ household, expenses, month, settlemonth }) => {
     const userTotal = Math.floor(expenses.filter(e => e.userId === person.id && e.month === month).map(x => x.amount).reduce((a, b) => a + b, 0) * 100) / 100
     const splitFromTotal = Math.floor((expenses.filter(e => e.month === month).map(e => e.amount).reduce((a, b) => a + b, 0) * (person.split * 0.01)) * 100) / 100
     const difference = Math.floor((splitFromTotal - userTotal) * 100) / 100
-    const percentFromTotal = Math.floor((userTotal / (expenses.map(e => e.amount).reduce((a, b) => a + b, 0))) * 100 * 100) / 100
+    const percentFromTotal = Math.floor(userTotal / expenses.filter(e => e.month === month).map(e => e.amount).reduce((a, b) => a + b, 0) * 10000) / 100
 
     return { name, userTotal, splitFromTotal, difference, percentFromTotal }
   }

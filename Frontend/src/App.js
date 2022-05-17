@@ -41,6 +41,12 @@ const App = () => {
     ? households.find(h => h.id === houseHistoryMatch.params.id)
     : null
 
+    if (!households) {
+      return (
+        null
+      )
+    }
+
   return (
     <Container className='container' style={{backgroundColor: 'aliceblue', height: '100vh', width: '70vh',  border: '3px solid rgb(70, 74, 100)', borderRadius: '5px' }}>
       <Link to='/' style={{ padding: '3px' }}>Home</Link>
